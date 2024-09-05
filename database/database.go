@@ -9,12 +9,12 @@ import (
 
 var DB *gorm.DB
 
-func connect() {
+func Connect() {
 	var err error
-	// &gorm.Config{}
-	DB, err = gorm.Open(sqlite.Open("go-ex-db"), &gorm.Config{})
+	// CGO gerektirmeyen modernc.org/sqlite sürücüsü ile bağlantı
+	DB, err = gorm.Open(sqlite.Open("file:data/go-ex-db.db?cache=shared&mode=memory"), &gorm.Config{})
 	if err != nil {
-		log.Fatal("failed to connection to database")
+		log.Fatal("Failed to connect to database:", err)
 	}
-	log.Println("connected database")
+	log.Println("Connected to database")
 }

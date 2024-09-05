@@ -1,4 +1,4 @@
-package user
+package model
 
 import (
 	"time"
@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type user struct {
+type User struct {
 	gorm.Model
 	Id         string    `json:"id" gorm:"uniqueIndex;not null"`
 	UserName   string    `json:"username" gorm:" not null"`
